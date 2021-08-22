@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header/Header.component";
 import Button from "../components/Button/Button.component";
-import ScrollAnimation from "react-animate-on-scroll";
 import { useState,useEffect } from "react";
 import Fade from "react-reveal/Fade";
 
@@ -116,14 +115,6 @@ export default function Home() {
     },
   ];
 
-  const afterAnimateCallback = function (visible) {
-    if (visible.inViewport) {
-      // Part of the element is in the viewport (the area defined by the offset property)
-    } else if (visible.onScreen) {
-      // Part of the element is visible on the screen
-    } else {
-      // Element is no longer visible
-    }
   };
   return (
     <>
@@ -140,7 +131,6 @@ export default function Home() {
               style={{ backgroundImage: `url(${bg.url})` }}
             ></div>
           </Fade>
-          //</ScrollAnimation>
         ))}
       </div>
       <div className="container">
