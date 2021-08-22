@@ -114,8 +114,6 @@ export default function Home() {
       class:"DesktopAccessories"
     },
   ];
-
-  };
   return (
     <>
       <Head>
