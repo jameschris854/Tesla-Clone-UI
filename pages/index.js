@@ -73,43 +73,43 @@ export default function Home() {
   let bgImages = [
     {
       id: 1,
-      url: "static/images/bg-images/ModelS.png",
+      url: "https://res.cloudinary.com/insta-clone-001/image/upload/v1629640231/Tesla-clone/ModelS_rzulnm.jpg",
       name: "Model S",
       class:"ModelS"
     },
     {
       id: 2,
-      url: "static/images/bg-images/ModelY.png",
+      url: "https://res.cloudinary.com/insta-clone-001/image/upload/v1629640237/Tesla-clone/ModelY_o4yvdi.jpg",
       name: "Model Y",
       class:"ModelY"
     },
     {
       id: 3,
-      url: "static/images/bg-images/Model3.png",
+      url: "https://res.cloudinary.com/insta-clone-001/image/upload/v1629640228/Tesla-clone/Model3_jhdzzq.jpg",
       name: "Model 3",
       class:"Model3"
     },
     {
       id: 4,
-      url: "static/images/bg-images/ModelX.png",
+      url: "https://res.cloudinary.com/insta-clone-001/image/upload/v1629640234/Tesla-clone/ModelX_dqaume.jpg",
       name: "Model X",
       class:"ModelX"
     },
     {
       id: 5,
-      url: "static/images/bg-images/SolarPanels.png",
+      url: "https://res.cloudinary.com/insta-clone-001/image/upload/v1629640223/Tesla-clone/SolarPanels_mmdcga.jpg",
       name: "SolarPanels",
       class:"SolarPanels"
     },
     {
       id: 6,
-      url: "static/images/bg-images/SolarRoof.png",
+      url: "https://res.cloudinary.com/insta-clone-001/image/upload/v1629640223/Tesla-clone/solarRoof_rttswk.jpg",
       name: "SolarRoofs ",
       class:"SolarRoofs"
     },
     {
       id: 7,
-      url: "static/images/bg-images/DesktopAccessories.png",
+      url: "https://res.cloudinary.com/insta-clone-001/image/upload/v1629640225/Tesla-clone/DesktopAccessories_hclxxm.jpg",
       name: "Accessories",
       class:"DesktopAccessories"
     },
