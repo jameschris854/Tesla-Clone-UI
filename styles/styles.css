@@ -93,6 +93,8 @@ body{
     flex-direction: row;
     justify-content: center;
     margin-bottom: 100px;
+    align-items:center;
+
 }
 .main-button{
     width: 250px;
@@ -142,6 +144,18 @@ svg{
     }
     .headerComponent .model-container span{
         display:none    
+    }
+
+}
+
+@media (max-width:550px){
+    .main-button-container{
+        flex-direction:column;
+        align-items:center;
+        margin-bottom:50px
+    }
+    .main-button{
+        margin-top:20px
     }
 
 }
