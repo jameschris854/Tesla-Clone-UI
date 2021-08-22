@@ -1,209 +1,162 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Header from "../components/Header/Header.component";
+import Button from "../components/Button/Button.component";
+import ScrollAnimation from "react-animate-on-scroll";
+import { useState,useEffect } from "react";
+import Fade from "react-reveal/Fade";
+
 
 export default function Home() {
+  const [title, setTitle] = useState("ModelX");
+  const [scroll, setScroll] = useState(1);
+  const [activeBg,setActiveBg] = useState('Model S')
+
+  const scrollHandler = () => {
+    if(window.pageYOffset == 0) return(setScroll(1))
+    let val =0
+    bgImages.map((e) => {
+    let box = document.querySelector('.'+e.class);
+    let height =  box.getBoundingClientRect().top
+    if(height <= 0 && e.id === 7){
+       return(setActiveBg(e.name))
+    }
+    if(height <= 150){
+       val = (Math.floor(height/75)%10)/10
+      setActiveBg(e.name)
+      return 
+       }
+  })  
+    let scrollValue = 0
+       switch (Math.abs(val)) {
+      case val = 0.1:
+        scrollValue = 1
+        break;
+      case val = 0.2:
+        scrollValue = 1
+        break;
+      case val = 0.3:
+        scrollValue = 0.9
+        break;
+      case val = 0.4:
+        scrollValue = 0.8
+        break;
+      case val = 0.5:
+        scrollValue = 0.7
+        break;
+      case val = 0.6:
+        scrollValue = 0.6
+        break;
+      case val = 0.7:
+        scrollValue = 0.5
+        break;
+       case val = 0.8:
+        scrollValue = 0
+        break;
+       case val = 0.9:
+        scrollValue = 0
+        break;
+       case val = 0:
+        scrollValue = 1
+        break;
+      default:
+        break;
+    }
+    setScroll(scrollValue)
+  }
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+
+     return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  })
+
+  let bgImages = [
+    {
+      id: 1,
+      url: "images/bg-images/ModelS.png",
+      name: "Model S",
+      class:"ModelS"
+    },
+    {
+      id: 2,
+      url: "images/bg-images/ModelY.png",
+      name: "Model Y",
+      class:"ModelY"
+    },
+    {
+      id: 3,
+      url: "images/bg-images/Model3.png",
+      name: "Model 3",
+      class:"Model3"
+    },
+    {
+      id: 4,
+      url: "images/bg-images/ModelX.png",
+      name: "Model X",
+      class:"ModelX"
+    },
+    {
+      id: 5,
+      url: "images/bg-images/SolarPanels.png",
+      name: "SolarPanels",
+      class:"SolarPanels"
+    },
+    {
+      id: 6,
+      url: "images/bg-images/SolarRoof.png",
+      name: "SolarRoofs ",
+      class:"SolarRoofs"
+    },
+    {
+      id: 7,
+      url: "images/bg-images/DesktopAccessories.png",
+      name: "Accessories",
+      class:"DesktopAccessories"
+    },
+  ];
+
+  const afterAnimateCallback = function (visible) {
+    if (visible.inViewport) {
+      // Part of the element is in the viewport (the area defined by the offset property)
+    } else if (visible.onScreen) {
+      // Part of the element is visible on the screen
+    } else {
+      // Element is no longer visible
+    }
+  };
   return (
-    <div className="container">
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Tesla clone website</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div className="bg-container">
+        {bgImages.map((bg) => (
+          <Fade  key={bg.id} fraction={0.7} onReveal={() => setTitle(bg.name)}>
+            <div
+              key={bg.id}
+              className={`${bg.class} bg-images`}
+              style={{ backgroundImage: `url(${bg.url})` }}
+            ></div>
+          </Fade>
+          //</ScrollAnimation>
+        ))}
+      </div>
+      <div className="container">
+        <Header />
+        <div className="title-container" style={{opacity:`${activeBg == 'Accessories'? 1 : scroll}`}}>
+          <h1 className="main-title" >{activeBg}</h1>
+          <span>
+            Order Online for <a href="#">Touchless Delivery</a>
+          </span>
         </div>
-      </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
-  )
+        <div className="main-button-container" style={{opacity:`${activeBg == 'Accessories'? 1 : scroll}`}}>
+          <Button text="CUSTOM ORDER" color="black" />
+          <Button text="EXISTING INVENTORY" color="white" style={activeBg == 'Accessories'? 'none':'block'}/>
+        </div>
+      </div>
+    </>
+  );
 }
