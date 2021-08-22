@@ -73,47 +73,48 @@ export default function Home() {
   let bgImages = [
     {
       id: 1,
-      url: "images/bg-images/ModelS.png",
+      url: "static/images/bg-images/ModelS.png",
       name: "Model S",
       class:"ModelS"
     },
     {
       id: 2,
-      url: "images/bg-images/ModelY.png",
+      url: "static/images/bg-images/ModelY.png",
       name: "Model Y",
       class:"ModelY"
     },
     {
       id: 3,
-      url: "images/bg-images/Model3.png",
+      url: "static/images/bg-images/Model3.png",
       name: "Model 3",
       class:"Model3"
     },
     {
       id: 4,
-      url: "images/bg-images/ModelX.png",
+      url: "static/images/bg-images/ModelX.png",
       name: "Model X",
       class:"ModelX"
     },
     {
       id: 5,
-      url: "images/bg-images/SolarPanels.png",
+      url: "static/images/bg-images/SolarPanels.png",
       name: "SolarPanels",
       class:"SolarPanels"
     },
     {
       id: 6,
-      url: "images/bg-images/SolarRoof.png",
+      url: "static/images/bg-images/SolarRoof.png",
       name: "SolarRoofs ",
       class:"SolarRoofs"
     },
     {
       id: 7,
-      url: "images/bg-images/DesktopAccessories.png",
+      url: "static/images/bg-images/DesktopAccessories.png",
       name: "Accessories",
       class:"DesktopAccessories"
     },
   ];
+
   return (
     <>
       <Head>
